@@ -1,0 +1,65 @@
+In this little sample I'm using this environment:
+<ul>
+<li>
+neo4j 1.9.5
+</li>
+<li>
+spring 3.2.6
+</li>
+<li>
+spring neo4j 2.3.3
+</li>
+</ul>
+
+I'm pretty new to graph DB so I need some suggestions from experts
+
+I'ld like to use the relationship direction in order to implement the following scenario: I have a graph where noder have only one type of relationship but each relationship can have a direction; let's suppose to call the type of the relationship "ROAD_ELEMENT" and let's suppose we have the following nodes: A, B, C and D and let's suppose the A is related to B, C is related to A and D and A are related between them; I'ld like to represent this scenario by using the relationship type "RELATION" in this way:
+<ul>
+<li>
+A-->B (relationship of type "ROAD_ELEMENT" and direction "OUTCOMING" from point A)
+</li>
+<li>
+A<--C (relationship of type "ROAD_ELEMENT" and direction "INCOMING" from point A)
+</li>
+<li>
+A<-->D (relationship of type "ROAD_ELEMENT" and direction "BOTH" from point A)
+</li>
+
+The final objective of my data-modeling is the following: I need to indicate that I can only walk from A to B and not from B to A, I only can walk from C to A but not from A to C and I can walk both from A to D and from D to A; in this way when I search for the minimal path between 2 nodes os a graph by using the neo4j alghoritms (e.g. dijkstra, shortestPath etc...), in the result I must avoid to have a path from the point B to the point A (I can only navigate from A to B)
+
+is it correct that I represent my scenario in the way I wrote (that is by using the relationship direction information in order to know how I can navigate my own graph)? Is there any other technique I can use in order to implement my scenario?
+
+
+
+Moreover by using the classes i wrote in this sample in my original project, when I try to import data from my RDBMS to Neo4J I get the following exception:
+<pre>
+<code>
+org.springframework.dao.DataRetrievalFailureException: 0; nested exception is org.neo4j.graphdb.NotFoundException: 0
+    at org.springframework.data.neo4j.support.Neo4jExceptionTranslator.translateExceptionIfPossible(Neo4jExceptionTranslator.java:63)
+    at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:58)
+    at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:213)
+    at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:163)
+    at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
+    at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:204)
+    at com.sun.proxy.$Proxy25.save(Unknown Source)
+    at it.eng.tz.pinf.graph.creator.service.impl.PinfDbSisGraphCreatorSvcImpl.creatGraph(PinfDbSisGraphCreatorSvcImpl.java:122)
+    at it.eng.pinf.graph.extractor.test.PinfGraphTest.graphCreationTest(PinfGraphTest.java:72)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+</code>
+</pre>
+It's like if it tries to first load the Relationship and then to insert a new one....can this be related to the fact that I control if the set contains the relationship?
+
+The strange thing is that if I use different type of relationship, all works pretty good; for example, in the previous code all works good if I remove the type from the @Relationship annotation in my relationship class and I write in my node class the following
+
+ <pre>
+<code>  
+    @RelatedToVia(direction=Direction.INCOMING,elementClass=GraphNodesRelationship.class, type="INC")
+    private Set<GraphNodesRelationship> versoCareggiataDiscorde = new HashSet<GraphNodesRelationship>();
+    @RelatedToVia(direction=Direction.OUTGOING,elementClass=GraphNodesRelationship.class, type="OUT")
+    private Set<GraphNodesRelationship> versoCareggiataConcorde = new HashSet<GraphNodesRelationship>();
+    @RelatedToVia(direction=Direction.BOTH, elementClass=GraphNodesRelationship.class, type="BOTH")
+    private Set<GraphNodesRelationship> versoCareggiataDoppio = new HashSet<GraphNodesRelationship>();
+</code>
+</pre>
+Is this correct? Am I doing anything wrong? Conceptually it seems to me all correct

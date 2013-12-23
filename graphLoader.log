@@ -1,0 +1,80 @@
+2013-12-23 09:02:25,763 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [application-context.xml]
+2013-12-23 09:02:26,282 INFO  [org.springframework.context.support.GenericApplicationContext] Refreshing org.springframework.context.support.GenericApplicationContext@8bf20b: startup date [Mon Dec 23 09:02:26 CET 2013]; root of context hierarchy
+2013-12-23 09:02:26,453 INFO  [org.springframework.beans.factory.support.DefaultListableBeanFactory] Overriding bean definition for bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor': replacing [Root bean: class [org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null] with [Root bean: class [org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+2013-12-23 09:02:26,790 INFO  [org.springframework.context.support.PropertySourcesPlaceholderConfigurer] Loading properties file from class path resource [configuration.properties]
+2013-12-23 09:02:27,007 INFO  [org.springframework.beans.factory.support.DefaultListableBeanFactory] Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@971ae: defining beans [org.springframework.context.support.PropertySourcesPlaceholderConfigurer#0,graphCreatorSvcImpl,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor#0,org.springframework.data.neo4j.config.Neo4jConfiguration#0,graphDatabaseService,neo4jGraphRepository,org.springframework.data.repository.core.support.RepositoryInterfaceAwareBeanPostProcessor#0,org.springframework.transaction.config.internalTransactionAspect,restTemplate,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor,neo4jTemplate,neo4jMappingContext,mappingInfrastructure,relationshipTypeRepresentationStrategy,typeRepresentationStrategyFactory,entityStateHandler,nodeTypeMapper,relationshipTypeMapper,entityFetchHandler,nodeStateTransmitter,neo4jConversionService,graphRelationshipInstantiator,graphEntityInstantiator,nodeEntityStateFactory,nodeTypeRepresentationStrategy,isNewStrategyFactory,entityAlias,graphDatabase,relationshipEntityStateFactory,nodeDelegatingFieldAccessorFactory,relationshipDelegatingFieldAccessorFactory,neo4jTransactionManager,indexCreationMappingEventListener,configurationCheck,persistenceExceptionTranslator,indexProvider,typeSafetyPolicy]; root of factory hierarchy
+2013-12-23 09:02:28,524 INFO  [org.springframework.transaction.jta.JtaTransactionManager] Using JTA UserTransaction: org.neo4j.kernel.impl.transaction.UserTransactionImpl@1b4576a
+2013-12-23 09:02:28,533 INFO  [org.springframework.transaction.jta.JtaTransactionManager] Using JTA TransactionManager: org.neo4j.kernel.impl.transaction.SpringTransactionManager@d72971
+2013-12-23 09:02:30,170 INFO  [it.neo4j.test.service.GraphCreatorSvcImpl] Created node with ID: 6
+2013-12-23 09:02:31,151 INFO  [it.neo4j.test.service.GraphCreatorSvcImpl] Created node with ID: 7
+2013-12-23 09:02:32,222 INFO  [it.neo4j.test.service.GraphCreatorSvcImpl] Created node with ID: 8
+2013-12-23 09:02:33,254 INFO  [it.neo4j.test.service.GraphCreatorSvcImpl] Created node with ID: 9
+2013-12-23 09:02:34,243 INFO  [it.neo4j.test.service.GraphCreatorSvcImpl] Created node with ID: 10
+2013-12-23 09:02:34,244 ERROR [it.neo4j.test.service.GraphCreatorSvcImpl] Error during graph creation; error message: null
+java.lang.NullPointerException
+	at it.neo4j.test.service.GraphCreatorSvcImpl.createRelationshipsForNode1(GraphCreatorSvcImpl.java:90)
+	at it.neo4j.test.service.GraphCreatorSvcImpl.createGraph(GraphCreatorSvcImpl.java:36)
+	at it.neo4j.test.GraphCrationTestCase.graphCreationTest(GraphCrationTestCase.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:74)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:83)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:72)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:231)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:88)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:174)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)
+2013-12-23 09:02:34,247 ERROR [it.neo4j.test.GraphCrationTestCase] Error during the test: null
+java.lang.NullPointerException
+	at it.neo4j.test.service.GraphCreatorSvcImpl.createRelationshipsForNode1(GraphCreatorSvcImpl.java:90)
+	at it.neo4j.test.service.GraphCreatorSvcImpl.createGraph(GraphCreatorSvcImpl.java:36)
+	at it.neo4j.test.GraphCrationTestCase.graphCreationTest(GraphCrationTestCase.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:74)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:83)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:72)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:231)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:88)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:174)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)
+2013-12-23 09:02:34,275 INFO  [org.springframework.context.support.GenericApplicationContext] Closing org.springframework.context.support.GenericApplicationContext@8bf20b: startup date [Mon Dec 23 09:02:26 CET 2013]; root of context hierarchy
+2013-12-23 09:02:34,276 INFO  [org.springframework.beans.factory.support.DefaultListableBeanFactory] Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@971ae: defining beans [org.springframework.context.support.PropertySourcesPlaceholderConfigurer#0,graphCreatorSvcImpl,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor#0,org.springframework.data.neo4j.config.Neo4jConfiguration#0,graphDatabaseService,neo4jGraphRepository,org.springframework.data.repository.core.support.RepositoryInterfaceAwareBeanPostProcessor#0,org.springframework.transaction.config.internalTransactionAspect,restTemplate,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor,neo4jTemplate,neo4jMappingContext,mappingInfrastructure,relationshipTypeRepresentationStrategy,typeRepresentationStrategyFactory,entityStateHandler,nodeTypeMapper,relationshipTypeMapper,entityFetchHandler,nodeStateTransmitter,neo4jConversionService,graphRelationshipInstantiator,graphEntityInstantiator,nodeEntityStateFactory,nodeTypeRepresentationStrategy,isNewStrategyFactory,entityAlias,graphDatabase,relationshipEntityStateFactory,nodeDelegatingFieldAccessorFactory,relationshipDelegatingFieldAccessorFactory,neo4jTransactionManager,indexCreationMappingEventListener,configurationCheck,persistenceExceptionTranslator,indexProvider,typeSafetyPolicy]; root of factory hierarchy
